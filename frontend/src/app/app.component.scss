@@ -1,0 +1,25 @@
+.app {
+    height: 60vh;
+
+    .app-title {
+        display: flex;
+        justify-content: space-around;
+        color: #426DFB;
+        font-size: 65px;
+        line-height: 105px;
+    }
+
+    .wrapper-btn {
+        display: flex;
+        justify-content: space-around;
+        position: relative;
+        height: 100%;
+
+        button {
+            top: 50%;
+            transform: translateY(-50%);
+            height: fit-content;
+            box-shadow: 0 0 40px 5px #0ff;
+        }
+    }
+}

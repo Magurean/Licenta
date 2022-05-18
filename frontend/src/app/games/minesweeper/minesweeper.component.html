@@ -1,0 +1,57 @@
+<div class="container dialog">
+    <mat-dialog-content>
+        <div class="content" [ngClass]="'level-' + gameLevel">
+            <header>
+                <h1 class="title">Minesweeper</h1>
+            </header>
+            <app-score-table [gameLevel]="gameLevel"></app-score-table>
+
+            <div class="header">
+                <button type="button" class="new-game-button" (click)="createNewEmptyBoard()" #resetButton>
+                    New game
+                </button>
+            </div>
+            <section class="board">
+                <div class="game-over" *ngIf="gameStatus == 'lost' || gameStatus == 'won'">
+                    <div class="game-over-body">
+                        <h4 *ngIf="gameStatus == 'lost'">Game Over!</h4>
+                        <h4 *ngIf="gameStatus == 'won'">You win!</h4>
+                        <button (click)="createNewEmptyBoard()">Restart</button>
+                    </div>
+                </div>
+                <header class="board-header">
+                    <form>
+                        <select class="board-level-control" name="gameLevel" [ngModel]="gameLevel"
+                            (ngModelChange)="onChangeGameLevel($event)">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </form>
+
+                    <div class="board-dynamic-infos">
+                        <div class="board-dynamic-info">
+                            <mat-icon>flag</mat-icon>
+                            <span class="board-dynamic-info-text">{{ flagsAvailable | async | timer:'00' }}</span>
+                        </div>
+
+                        <div class="board-dynamic-info">
+                            <mat-icon>watch_later</mat-icon>
+                            <span class="board-dynamic-info-text">{{ timer | timer:'000'}}</span>
+                        </div>
+                    </div>
+                </header>
+
+                <main class="board-main" [ngClass]="[gameStatus ? gameStatus : '']">
+                    <section *ngFor="let row of boardParsed; trackBy: trackByRow" class="row">
+                        <app-cell *ngFor="let cell of row; trackBy: trackByCell" [cell]="cell" [vertical]="vertical"
+                            [horizontal]="horizontal" (open)="onOpenCell($event)"
+                            (changeFlagsAvailable)="onChangeFlagsAvailable($event)" (focusCell)="onFocusCell($event)"
+                            (focusResetButton)="onFocusResetButton()">
+                        </app-cell>
+                    </section>
+                </main>
+            </section>
+        </div>
+    </mat-dialog-content>
+</div>

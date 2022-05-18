@@ -1,0 +1,26 @@
+<button pressEventIndicator type="button" class="cell {{cell.openedIdClassName}}" [attr.data-i]="cell.i"
+    (press)="onPress($event)" (pressUp)="onPressUp()" (click)="onClick()" (contextmenu)="onContextMenu($event)"
+    [ngClass]="{
+        'opened': cell.isOpened,
+        'flag': cell.label === 'F',
+        'mine': cell.isMine,
+        'mine-exploded': cell.isMineExploded,
+        'flag-wrong': cell.isWrongFlag
+    }">
+
+    <ng-container [ngSwitch]="cell.label">
+
+        <ng-container *ngSwitchCase="'M'">
+            <mat-icon>new_releases</mat-icon>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'F'">
+            <mat-icon>flag</mat-icon>
+        </ng-container>
+
+        <ng-container *ngSwitchDefault>
+            {{ cell.label }}
+        </ng-container>
+
+    </ng-container>
+</button>

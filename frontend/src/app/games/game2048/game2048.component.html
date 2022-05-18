@@ -1,0 +1,42 @@
+<div class="container dialog">
+    <mat-dialog-content>
+        <h1 class="title">
+            Angular 2048
+        </h1>
+        <div class="content">
+            <section *ngIf="this.isLogged" class="scoreboard">
+                <div class="wrapper">
+                    <div class="scoreboard-title">
+                        Best score
+                    </div>
+                    <div class="scoreboard-title">
+                        {{this.user.game2048Score ? this.user.game2048Score : undefined}}
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="scoreboard-title">
+                        Score
+                    </div>
+                    <div class="scoreboard-title">
+                        {{score !== undefined ? score : 0}}
+                    </div>
+                </div>
+            </section>
+            <div *ngIf="!this.isLogged" class="scoreboard">Please login to record the score</div>
+            <div class="header">
+                <button class="new-game-button" (click)="restart()">New game</button>
+            </div>
+            <div class="board-2048">
+                <div class="game-over" *ngIf="isGameOver">
+                    <div class="game-over-body">
+                        <h4 *ngIf="!isCompleted">Game Over!</h4>
+                        <h4 *ngIf="isCompleted">You win!</h4>
+                        <button (click)="restart()">Restart</button>
+                    </div>
+                </div>
+                <app-cell *ngFor="let cell of cells" [cell]="cell"></app-cell>
+            </div>
+            <ng-template #nullScore> - </ng-template>
+        </div>
+    </mat-dialog-content>
+</div>

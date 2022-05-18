@@ -1,0 +1,28 @@
+<section class="scoreboard">
+    <div class="scoreboard-title">
+        Scoreboard
+    </div>
+    <div *ngIf="this.isLogged" class="scoreboard-wrapper">
+        <div class="game-level">
+            {{gameLevel | titlecase }}
+        </div>
+        <div class="game-score" *ngIf="gameLevel == 'easy'">
+            <ng-container *ngIf="user.minesweeperScoreEasy == 0 || user.minesweeperScoreEasy; else nullScore">
+                {{user.minesweeperScoreEasy | timer:'000'}}
+            </ng-container>
+        </div>
+        <div class="game-score" *ngIf="gameLevel == 'medium'">
+            <ng-container *ngIf="user.minesweeperScoreMedium == 0 || user.minesweeperScoreMedium; else nullScore">
+                {{user.minesweeperScoreMedium | timer:'000'}}
+            </ng-container>
+        </div>
+        <div class="game-score" *ngIf="gameLevel == 'hard'">
+            <ng-container *ngIf="user.minesweeperScoreHard == 0 || user.minesweeperScoreHard; else nullScore">
+                {{user.minesweeperScoreHard | timer:'000'}}
+            </ng-container>
+        </div>
+    </div>
+    <div *ngIf="!this.isLogged" class="scoreboard-wrapper"> Please login to record the score</div>
+</section>
+
+<ng-template #nullScore> - </ng-template>

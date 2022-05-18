@@ -1,0 +1,63 @@
+<div class="container dialog">
+    <div class="title-container">
+        <div class="title">Wordle </div>
+    </div>
+    <div>
+        <section *ngIf="this.isLogged" class="scoreboard">
+            <div class="wrapper">
+                <div class="scoreboard-title">
+                    Games won
+                </div>
+                <div class="scoreboard-title">
+                    {{this.user.wordleGamesWon}}
+                </div>
+            </div>
+            <div class="wrapper">
+                <div class="scoreboard-title">
+                    Games played
+                </div>
+                <div class="scoreboard-title">
+                    {{this.user.wordleGamesPlayed}}
+                </div>
+            </div>
+        </section>
+        <div *ngIf="!this.isLogged" class="scoreboard">Please login to record the score</div>
+    </div>
+    <div class="main">
+        <div class="try-container" *ngFor="let try of tries" #tryContainer>
+            <div class="letter-container" *ngFor="let letter of try.letters"
+                [class.match]="letter.state === letterState.FullMatch"
+                [class.partial]="letter.state === letterState.PartialMatch"
+                [class.wrong]="letter.state === letterState.Wrong" [class.has-text]="letter.text !== ''">
+                {{letter.text}}
+            </div>
+        </div>
+        <div class="game-over" *ngIf="isGameOver">
+            <div class="game-over-body">
+                <div *ngIf="!this.won">
+                    <h4>Game Over!</h4>
+                    <h3> The word is: {{this.answer}}</h3>
+                </div>
+                <h4 *ngIf="this.won">You win!</h4>
+                <button (click)="initGame()">Restart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="keyboard-container">
+        <div [class]="['row' + i, 'row'].join(' ')" *ngFor="let row of keyboard; let i = index">
+            <div *ngFor="let key of row" [class]="getKeyClass(key)" [class.enter]="key === 'Enter'"
+                (click)="handleClickKey(key)">
+                <div *ngIf="key !== 'Backspace' && key !== 'Enter'">
+                    {{key}}
+                </div>
+                <div *ngIf="key == 'Backspace'">
+                    <mat-icon>backspace</mat-icon>
+                </div>
+                <div *ngIf="key == 'Enter'">
+                    <mat-icon>subdirectory_arrow_left</mat-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

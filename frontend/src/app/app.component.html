@@ -1,0 +1,18 @@
+<div class="app">
+    <h1 class="app-title">Licenta</h1>
+
+    <div class="wrapper-btn">
+        <button type="button" mat-raised-button color="primary" (click)="openDialog()">Minesweeper</button>
+
+        <button type="button" mat-raised-button color="primary" (click)="openDialog2()">2048</button>
+
+        <button type="button" mat-raised-button color="primary" (click)="openDialog3()">Wordle</button>
+
+        <button *ngIf="!this.userService.userLogged == true" type="button" mat-raised-button color="warn"
+            (click)="openDialog4()">Login</button>
+
+        <button *ngIf="this.userService.userLogged == true" type="button" mat-raised-button color="warn"
+            (click)="logout()">Log
+            out</button>
+    </div>
+</div>

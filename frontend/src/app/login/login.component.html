@@ -1,0 +1,24 @@
+<div class="container dialog">
+    <form *ngIf="this.isLogin" [formGroup]="form" (ngSubmit)="submit(model)">
+        <div class="title"> Login</div>
+        <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+        <div class="small-notification">
+            <p class="question"> Not a member?</p>
+            <button type="button" mat-button color="primary" (click)="onSignUp()"> Register</button>
+        </div>
+    </form>
+    <form *ngIf="!this.isLogin" [formGroup]="form" (ngSubmit)="submit(model)">
+        <div class="title"> Sign Up</div>
+        <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
+        <div class="small-notification">
+            <p class="question"> Already a member?</p>
+            <button type="button" mat-button color="primary" (click)="onSignUp()"> Sign
+                Up</button>
+        </div>
+    </form>
+
+    <div class="submit-button">
+        <button type="submit" mat-raised-button color="primary" (click)="submit(model)"> Submit</button>
+    </div>
+
+</div>

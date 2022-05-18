@@ -1,0 +1,22 @@
+.container {
+    padding: 10px;
+    width: 500px;
+    height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .small-notification {
+        display: inline-flex;
+
+        .question {
+            margin: 14px 0;
+        }
+    }
+}
+
+.submit-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}

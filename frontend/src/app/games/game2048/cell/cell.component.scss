@@ -1,0 +1,114 @@
+.cell {
+    width: 100px;
+    height: 100px;
+    background-color: #cdc1b4;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 2px;
+    position: relative;
+    border-radius: 4px;
+    color: transparent;
+
+    .cell-value {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 20px;
+        line-height: 32px;
+        height: 30px;
+        margin: auto;
+        text-align: center;
+    }
+}
+
+.cell:not(.empty) {
+    transition: all 0.1s cubic-bezier(0.2, 0, 0.1, 1);
+}
+
+.cell.merged {
+    -webkit-animation: merge 0.2s ease-out normal;
+    animation: merge 0.2s ease-out normal;
+    z-index: 99;
+}
+
+.cell.color-2 {
+    background: #f1e8de;
+    color: black;
+}
+
+.cell.color-4 {
+    background: #f0e2c9;
+    color: black;
+}
+
+.cell.color-8 {
+    color: #f9f6f2;
+    background: #e3a56f;
+}
+
+.cell.color-16 {
+    color: #f9f6f2;
+    background: #e68c5c;
+}
+
+.cell.color-32 {
+    color: #f9f6f2;
+    background: #ed7759;
+}
+
+.cell.color-64 {
+    color: #f9f6f2;
+    background: #ea5838;
+}
+
+.cell.color-128 {
+    color: #f9f6f2;
+    background: #dcbf68;
+}
+
+.cell.color-256 {
+    color: #f9f6f2;
+    background: #e0c058;
+}
+
+.cell.color-512 {
+    color: #f9f6f2;
+    background: #e0bc48;
+}
+
+.cell.color-1024 {
+    color: #f9f6f2;
+    background: #dcb639;
+}
+
+.cell.color-2048 {
+    color: #f9f6f2;
+    background: #ddb328;
+}
+
+.cell.color-super {
+    color: #f9f6f2;
+    background: #33312a;
+}
+
+@keyframes merge {
+    0% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.2);
+        -ms-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1);
+    }
+}
