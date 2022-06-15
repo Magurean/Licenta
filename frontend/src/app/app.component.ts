@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Game2048Component } from './games/game2048/game2048.component';
 import { MinesweeperComponent } from './games/minesweeper/minesweeper.component';
@@ -12,30 +12,26 @@ import { User } from './userModel';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   constructor(public dialog: MatDialog,
     public userService: UserService) { }
   user: User = null;
   title = 'Licenta';
 
-  ngOnInit(): void {
+  openMinesweeper() {
+    this.dialog.open(MinesweeperComponent);
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(MinesweeperComponent, {
-    });
+  open2048() {
+    this.dialog.open(Game2048Component);
   }
 
-  openDialog2() {
-    const dialogRef = this.dialog.open(Game2048Component);
+  openWordle() {
+    this.dialog.open(WordleComponent);
   }
 
-  openDialog3() {
-    const dialogRef = this.dialog.open(WordleComponent);
-  }
-
-  openDialog4() {
-    const dialogRef = this.dialog.open(LoginComponent).afterClosed().subscribe(x => this.user = this.userService.User);
+  openLogin() {
+    this.dialog.open(LoginComponent).afterClosed().subscribe(x => this.user = this.userService.User);
     if (this.userService.User) {
       this.userService.userLogged = true;
       this.user = this.userService.User

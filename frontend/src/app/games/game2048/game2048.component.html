@@ -1,7 +1,7 @@
 <div class="container dialog">
     <mat-dialog-content>
         <h1 class="title">
-            Angular 2048
+            2048
         </h1>
         <div class="content">
             <section *ngIf="this.isLogged" class="scoreboard">
@@ -29,7 +29,7 @@
             <div class="board-2048">
                 <div class="game-over" *ngIf="isGameOver">
                     <div class="game-over-body">
-                        <h4 *ngIf="!isCompleted">Game Over!</h4>
+                        <h4 *ngIf="!isCompleted">Game over!</h4>
                         <h4 *ngIf="isCompleted">You win!</h4>
                         <button (click)="restart()">Restart</button>
                     </div>

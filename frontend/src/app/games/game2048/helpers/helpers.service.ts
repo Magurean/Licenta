@@ -18,22 +18,14 @@ export class HelpersService {
     }
 
     hasMoves(): boolean {
-        const column1 = this.columns[0];
-        const column2 = this.columns[1];
-        const column3 = this.columns[2];
-        const column4 = this.columns[3];
-        const row1 = this.rows[0];
-        const row2 = this.rows[1];
-        const row3 = this.rows[2];
-        const row4 = this.rows[3];
         let hasColumnMoves = false;
         let hasRowMoves = false;
 
         for (var i = 1; i < 4; i++) {
-            if (this.equalValue(column1[i - 1], column1[i])
-                || this.equalValue(column2[i - 1], column2[i])
-                || this.equalValue(column3[i - 1], column3[i])
-                || this.equalValue(column4[i - 1], column4[i])) {
+            if (this.equalValue(this.columns[0][i - 1], this.columns[0][i])
+                || this.equalValue(this.columns[1][i - 1], this.columns[1][i])
+                || this.equalValue(this.columns[2][i - 1], this.columns[2][i])
+                || this.equalValue(this.columns[3][i - 1], this.columns[3][i])) {
                 hasColumnMoves = true
                 continue
             }
@@ -42,10 +34,10 @@ export class HelpersService {
         if (hasColumnMoves) return true;
 
         for (var i = 1; i < 4; i++) {
-            if (this.equalValue(row1[i - 1], row1[i])
-                || this.equalValue(row2[i - 1], row2[i])
-                || this.equalValue(row3[i - 1], row3[i])
-                || this.equalValue(row4[i - 1], row4[i])) {
+            if (this.equalValue(this.rows[0][i - 1], this.rows[0][i])
+                || this.equalValue( this.rows[1][i - 1],  this.rows[1][i])
+                || this.equalValue(this.rows[2][i - 1], this.rows[2][i])
+                || this.equalValue(this.rows[3][i - 1], this.rows[3][i])) {
                 hasRowMoves = true
                 continue
             }
@@ -104,7 +96,7 @@ export class HelpersService {
         const emptyCell: Cell[] = this.getEmptyCells();
         if (emptyCell.length === 0) return;
         const randomPosition = this.random(0, emptyCell.length - 1);
-        const randomValue = this.random(1, 2) === 1 ? 2 : 4;
+        const randomValue = this.random(1, 2) === 1 ? 2 : 512;
         emptyCell[randomPosition].value = randomValue;
     }
 }

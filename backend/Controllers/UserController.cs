@@ -37,15 +37,15 @@ public class UserController : ControllerBase
     {
         if (user.Email is not null)
         {
-            User newUser = new() { Id = Guid.NewGuid(), Username = user.Username, Password = user.Password, Email = user.Email };
+            user.Id = Guid.NewGuid();
 
-            string result = userResource.CreateUser(newUser);
+            string result = userResource.CreateUser(user);
             if (result == "not ok")
             {
                 return BadRequest(result);
             }
 
-            return Ok(newUser);
+            return Ok(user);
         }
         else
         {

@@ -54,15 +54,15 @@ export class MinesweeperComponent implements OnInit, OnDestroy, AfterViewInit {
         if (gameLevelSelected === GameLevelEnum.Easy) {
           this.vertical = 9;
           this.horizontal = 9;
-          this.minesLength = 10;
+          this.minesLength = 15;
         } else if (gameLevelSelected === GameLevelEnum.Medium) {
-          this.vertical = 16;
-          this.horizontal = 16;
+          this.vertical = 14;
+          this.horizontal = 14;
           this.minesLength = 40;
         } else if (gameLevelSelected === GameLevelEnum.Hard) {
           this.vertical = 16;
-          this.horizontal = 30;
-          this.minesLength = 99;
+          this.horizontal = 20;
+          this.minesLength = 70;
         }
 
         this.gameLevel = gameLevelSelected;

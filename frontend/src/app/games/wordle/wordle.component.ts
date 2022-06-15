@@ -35,6 +35,8 @@ export class WordleComponent implements OnInit {
     private userService: UserService) { }
 
   ngOnInit(): void {
+    this.user = this.userService.user;
+    this.isLogged = this.userService.userLogged
     this.initGame()
   }
 

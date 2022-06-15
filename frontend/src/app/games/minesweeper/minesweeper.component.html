@@ -14,7 +14,7 @@
             <section class="board">
                 <div class="game-over" *ngIf="gameStatus == 'lost' || gameStatus == 'won'">
                     <div class="game-over-body">
-                        <h4 *ngIf="gameStatus == 'lost'">Game Over!</h4>
+                        <h4 *ngIf="gameStatus == 'lost'">Game over!</h4>
                         <h4 *ngIf="gameStatus == 'won'">You win!</h4>
                         <button (click)="createNewEmptyBoard()">Restart</button>
                     </div>
