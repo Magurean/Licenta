@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormlyFieldConfig } from '@ngx-formly/core';
@@ -21,7 +21,7 @@ export class LoginComponent {
     private snackBarService: SnackBarService) { }
   isLogin: boolean = true;
   user: User;
-  form = new FormGroup({});
+  form = new UntypedFormGroup({});
   model: any = {};
   fields: FormlyFieldConfig[] = [
     {
