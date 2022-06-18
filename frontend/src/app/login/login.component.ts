@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormlyFieldConfig } from '@ngx-formly/core';
 import { catchError, tap } from 'rxjs/operators';
 import { AppComponent } from '../app.component';
