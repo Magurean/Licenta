@@ -25,7 +25,9 @@ public class UserResource : IUserResource
     public string CreateUser(User user)
     {
         if (context.Users.Any(x => x.Username == user.Username))
+        {
             return "not ok";
+        }
 
         context.Users.Add(user);
         context.SaveChanges();
@@ -39,7 +41,7 @@ public class UserResource : IUserResource
 
     public string UpdateUser(User user)
     {
-        var oldUser = context.Users.Where(x => x.Id == user.Id).FirstOrDefault();
+        User oldUser = context.Users.Where(x => x.Id == user.Id).FirstOrDefault();
 
         if (oldUser != null)
         {

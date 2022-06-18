@@ -14,7 +14,7 @@ export class HelpersService {
     }
 
     random(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min)) + min;
+        return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     hasMoves(): boolean {
@@ -35,7 +35,7 @@ export class HelpersService {
 
         for (var i = 1; i < 4; i++) {
             if (this.equalValue(this.rows[0][i - 1], this.rows[0][i])
-                || this.equalValue( this.rows[1][i - 1],  this.rows[1][i])
+                || this.equalValue(this.rows[1][i - 1], this.rows[1][i])
                 || this.equalValue(this.rows[2][i - 1], this.rows[2][i])
                 || this.equalValue(this.rows[3][i - 1], this.rows[3][i])) {
                 hasRowMoves = true
@@ -87,7 +87,7 @@ export class HelpersService {
         return actionHandler[direction]
             (direction === Direction.Left || direction === Direction.Right ? this.columns : this.rows)
             .map((mergeScore: number) => {
-                this.score += mergeScore; console.log(mergeScore);
+                this.score += mergeScore;
                 return this.score;
             });
     }
@@ -96,7 +96,7 @@ export class HelpersService {
         const emptyCell: Cell[] = this.getEmptyCells();
         if (emptyCell.length === 0) return;
         const randomPosition = this.random(0, emptyCell.length - 1);
-        const randomValue = this.random(1, 2) === 1 ? 2 : 512;
+        const randomValue = this.random(1, 2) === 1 ? 2 : 4;
         emptyCell[randomPosition].value = randomValue;
     }
 }

@@ -60,8 +60,14 @@ public class UserController : ControllerBase
     }
 
     [HttpPut]
-    public string UpdateUser(User user)
+    public ObjectResult UpdateUser(User user)
     {
-        return userResource.UpdateUser(user);
+        string result = userResource.UpdateUser(user);
+
+        if (result == "ok")
+        {
+            return Ok(user);
+        }
+        return BadRequest(result);
     }
 }
